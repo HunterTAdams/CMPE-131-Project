@@ -108,10 +108,10 @@ TextureImporter:
       name: basePlay
       rect:
         serializedVersion: 2
-        x: 8
-        y: 78
-        width: 33
-        height: 13
+        x: 7
+        y: 77
+        width: 35
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +150,10 @@ TextureImporter:
       name: pressPlay
       rect:
         serializedVersion: 2
-        x: 84
-        y: 78
-        width: 33
-        height: 13
+        x: 83
+        y: 77
+        width: 35
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +171,10 @@ TextureImporter:
       name: baseQuit1
       rect:
         serializedVersion: 2
-        x: 8
-        y: 60
-        width: 33
-        height: 13
+        x: 7
+        y: 59
+        width: 35
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +213,10 @@ TextureImporter:
       name: pressQuit1
       rect:
         serializedVersion: 2
-        x: 84
-        y: 60
-        width: 33
-        height: 13
+        x: 83
+        y: 59
+        width: 35
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -430,7 +430,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      hoverPlay: 1923615500
+      hoverResume: -507392473
       hoverQuit2: -1439406728
       baseQuit1: 1155285336
       pressResume: 685081914
@@ -444,7 +444,7 @@ TextureImporter:
       baseResume: -828085640
       pressQuit2: 793126006
       basePlay: 1220663175
-      hoverResume: -507392473
+      hoverPlay: 1923615500
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
