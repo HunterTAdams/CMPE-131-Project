@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public Animator transition;
+    public AudioSource audioSource;
 
     public float transitionTime = 1f;
 
     public void PlayGame() {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(FadeAudioSource.StartFade(audioSource, transitionTime, 0));
     }
 
     public void QuitGame() {

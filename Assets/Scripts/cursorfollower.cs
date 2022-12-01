@@ -9,6 +9,6 @@ public class cursorfollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = Input.mousePosition + Vector3.right;
+        this.transform.position = Input.mousePosition + new Vector3(20, 20, 0);
     }
 }

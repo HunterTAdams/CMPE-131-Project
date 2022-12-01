@@ -8,11 +8,13 @@ public class DeathSystem : MonoBehaviour
     public GameObject deathMenu;
     public playercontroller player;
     public static bool dead;
+    public AudioSource audioSource;
 
     public void death() {
         deathMenu.SetActive(true);
         Time.timeScale = 0f;
         dead = true;
+        audioSource.Play();
     }
 
     public void retry() {

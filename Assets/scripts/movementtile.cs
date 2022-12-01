@@ -10,9 +10,12 @@ public class movementtile : MonoBehaviour
     public playercontroller king;
     public int cost;
     public Text costdisplay;
+    public Text costdisplayHUD;
     public AudioSource hoversound;
     public AudioSource clicksound;
     public AudioSource takesound;
+
+
     void OnEnable()
     {
         Color tmp = GetComponent<SpriteRenderer>().color;
@@ -30,6 +33,8 @@ public class movementtile : MonoBehaviour
         if (!Pause.gamePaused && !DeathSystem.dead)
         {
             costdisplay.text = "";
+            costdisplayHUD.text = "";
+
             tileaccess.energy += -cost;
             if (!tileaccess.tileDict[king.currentTile.position + movement].moveTo(king))
             {
@@ -54,7 +59,13 @@ public class movementtile : MonoBehaviour
         if (!Pause.gamePaused && !DeathSystem.dead)
         {
             hoversound.Play();
-            costdisplay.text = cost.ToString();
+
+            if (cost != 0)
+            {
+                costdisplay.text = "-" + cost.ToString();
+                costdisplayHUD.text = "-" + cost.ToString();
+            }
+
             tileScript target;
             Color tmp = GetComponent<SpriteRenderer>().color;
             tmp.a = 1f;
@@ -68,6 +79,7 @@ public class movementtile : MonoBehaviour
     void OnMouseExit()
     {
         costdisplay.text = "";
+        costdisplayHUD.text = "";
         tileScript target;
         Color tmp = GetComponent<SpriteRenderer>().color;
         tmp.a = .5f;
