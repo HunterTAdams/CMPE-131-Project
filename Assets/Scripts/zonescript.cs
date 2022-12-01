@@ -10,13 +10,25 @@ public class zonescript : MonoBehaviour
     public Camera main;
     public GameObject hud;
     public bool deadonce = false;
-    
+    public AudioSource music;
+    public Vector2Int checkposition;
+
 
 
     public void Awake()
     {
+        Debug.Log("works");
+        if (tileaccess.currentzone != null)
+        {
+            StartCoroutine(FadeAudioSource.StartFade(tileaccess.currentzone.music, 4, 0));
+        }
+        music.Play();
+        StartCoroutine(FadeAudioSource.StartFade(music, 4, 1));
+        
         tileaccess.currentzone = this;
         king.timeonturn = 1f;
+        king.initposx = checkposition.x;
+        king.initposy = checkposition.y;
 
         //awoken by the trigger death. destroys the previous trigger, places the next wall. spawns all of pieces. briefly moves the camera to see the next zone. set king timeonturn to 1
     }

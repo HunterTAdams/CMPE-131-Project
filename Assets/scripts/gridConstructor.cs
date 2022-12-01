@@ -37,7 +37,6 @@ public class gridConstructor : MonoBehaviour
             }
         }
         tilemap.ClearAllTiles();
-        tileaccess.currentzone = firstzone;
         foreach (GameObject i in enableatstart)
         {
             i.SetActive(true);//ayyyyyy easiest way to make shit spawn at the start w/o worrying about the dictionary bein there

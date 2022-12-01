@@ -12,6 +12,7 @@ public class playercontroller : basecontroller
     public GameObject[] hearts;
     public GameObject healthbutton;
     public AudioSource turnsound;
+    public DeathSystem die;
 
 
     
@@ -71,7 +72,7 @@ public class playercontroller : basecontroller
         StartCoroutine(flashred(attacker));
         //update healthbar here
         hurtsound.Play();
-        //if(health == 0) death(); //idk what death is yet
+        if(health == 0) die.death(); //idk what death is yet
         for(int i = 3; i > 0; i--)//copy this to wherever health is updated
         {
             hearts[i - 1].SetActive(true);

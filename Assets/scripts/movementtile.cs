@@ -27,36 +27,42 @@ public class movementtile : MonoBehaviour
     }
     void OnMouseDown()//apparently this only calls when... a collider on the object is clicked. i guess it works but i dont like it.
     {
-        costdisplay.text = "";
-        tileaccess.energy += -cost;
-        if (!tileaccess.tileDict[king.currentTile.position + movement].moveTo(king))
+        if (!Pause.gamePaused && !DeathSystem.dead)
         {
-            if (!tileaccess.tileDict[king.currentTile.position + movement].occupant.ghost)
+            costdisplay.text = "";
+            tileaccess.energy += -cost;
+            if (!tileaccess.tileDict[king.currentTile.position + movement].moveTo(king))
             {
-                takesound.Play();
+                if (!tileaccess.tileDict[king.currentTile.position + movement].occupant.ghost)
+                {
+                    takesound.Play();
+                }
+                else clicksound.Play();
+                tileaccess.tileDict[king.currentTile.position + movement].moveTo(king); //the king does this twice to both take and replace the target piece
+                tileaccess.currentzone.checkdead();
             }
-            else clicksound.Play();
-            tileaccess.tileDict[king.currentTile.position + movement].moveTo(king); //the king does this twice to both take and replace the target piece
-            tileaccess.currentzone.checkdead();
-        }
-        else
-        {
-            clicksound.Play();
-        }
+            else
+            {
+                clicksound.Play();
+            }
 
-        king.endTurn();
+            king.endTurn();
+        }
     }
     void OnMouseEnter()//mouse events only target the first collider they hit. these are at z = -10 so they hit them first, and still let you hover over stuff to see their movement.
     {
-        hoversound.Play();
-        costdisplay.text = cost.ToString();
-        tileScript target;
-        Color tmp = GetComponent<SpriteRenderer>().color;
-        tmp.a = 1f;
-        GetComponent<SpriteRenderer>().color = tmp;
-        if (tileaccess.tileDict.TryGetValue(movement + king.currentTile.position,out target) && target.occupant != null)
+        if (!Pause.gamePaused && !DeathSystem.dead)
         {
-            target.occupant.OnMouseEnter();
+            hoversound.Play();
+            costdisplay.text = cost.ToString();
+            tileScript target;
+            Color tmp = GetComponent<SpriteRenderer>().color;
+            tmp.a = 1f;
+            GetComponent<SpriteRenderer>().color = tmp;
+            if (tileaccess.tileDict.TryGetValue(movement + king.currentTile.position, out target) && target.occupant != null)
+            {
+                target.occupant.OnMouseEnter();
+            }
         }
     }
     void OnMouseExit()
