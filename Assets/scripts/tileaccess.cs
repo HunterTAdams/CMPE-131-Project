@@ -7,9 +7,7 @@ public static class tileaccess
     public static Dictionary<Vector2Int, tileScript> tileDict;
     public static bool isPlayerTurn;
     public static Vector2Int playerPos;
-    public static int deadbishs;
-    public static int deadrooks;
-    public static int deadknights;
-    public static int deadqueens;
+    public static int energy;
+    public static zonescript currentzone;
     // This needs to hold every tile by its coordinates
 }

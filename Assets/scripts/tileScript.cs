@@ -19,11 +19,12 @@ public class tileScript : MonoBehaviour
             mover.transform.position = this.transform.position - .25f*Vector3.up;
             mover.currentTile = this;
             occupant = mover;
+            if(!mover.ghost) mover.GetComponent<SpriteRenderer>().sortingOrder = -position.x - position.y;
             return true;
         }
         if(occupant != mover)
         {
-            occupant.death();
+            occupant.death(mover);
         }
         return false;
     }

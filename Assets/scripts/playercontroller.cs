@@ -6,15 +6,30 @@ using UnityEngine.UI;
 public class playercontroller : basecontroller
 {
     public GameObject[] movementtiles;
-    public Text hudtext;
+    public Text energytext;
     public int health;
+    public AudioSource hurtsound;
+    public GameObject[] hearts;
+    public GameObject healthbutton;
+    public AudioSource turnsound;
+
+
+    
     public override void Turn()
     {
+        turnsound.Play();
         tileaccess.isPlayerTurn = true;
+        if (tileaccess.energy >= 5 && health <3)
+        {
+            healthbutton.SetActive(true);
+        }
         foreach(GameObject i in movementtiles)
         {
             i.SetActive(true);
         }
+        Color tmp = GetComponent<SpriteRenderer>().color;
+        tmp.a = .5f;
+        GetComponent<SpriteRenderer>().color = tmp;
     }
     public void endTurn()
     {
@@ -22,14 +37,59 @@ public class playercontroller : basecontroller
         {
             i.SetActive(false);
         }
+        healthbutton.SetActive(false);
         tileaccess.isPlayerTurn = false;
         tileaccess.playerPos = currentTile.position;
-        hudtext.text = "Biships: " + tileaccess.deadbishs + ", Rooks: " + tileaccess.deadrooks + ", Knights: " + tileaccess.deadknights + ", Queens: " + tileaccess.deadqueens + ", Position: " + tileaccess.playerPos.x + " " + tileaccess.playerPos.y + ", Health: " + health; //this stuff will be replaced by an actual hud that updates values in more careful places. for now this works.
+        energytext.text = tileaccess.energy.ToString();
+        Color tmp = GetComponent<SpriteRenderer>().color;
+        tmp.a = 1f;
+        GetComponent<SpriteRenderer>().color = tmp;
+        //update energy here
+        
     }
 
-    public override void death()
+    public void addhealth()
+    {
+        health += 1;
+        tileaccess.energy -= 5;
+        for (int i = 3; i > 0; i--)//copy this to wherever health is updated
+        {
+            hearts[i - 1].SetActive(true);
+            if (i > health)
+            {
+                hearts[i - 1].SetActive(false);
+            }
+        }
+        endTurn();
+    }
+
+    public override void death(basecontroller attacker)
     {
         //for the player specifically, this decrements a healthbar and then ends the game if the health bar is 0
         health += -1;
+        energytext.text = tileaccess.energy.ToString();
+        StartCoroutine(flashred(attacker));
+        //update healthbar here
+        hurtsound.Play();
+        //if(health == 0) death(); //idk what death is yet
+        for(int i = 3; i > 0; i--)//copy this to wherever health is updated
+        {
+            hearts[i - 1].SetActive(true);
+            if(i > health)
+            {
+                hearts[i - 1].SetActive(false);
+            }
+        }
+
+    }
+    private IEnumerator flashred(basecontroller attacker)
+    {
+        Color tmp = attacker.gameObject.GetComponent<SpriteRenderer>().color;
+        tmp.g = 0f;
+        attacker.gameObject.GetComponent<SpriteRenderer>().color = tmp;
+        yield return new WaitForSeconds(.4f);
+        tmp = attacker.gameObject.GetComponent<SpriteRenderer>().color;
+        tmp.g = 1f;
+        attacker.gameObject.GetComponent<SpriteRenderer>().color = tmp;
     }
 }
