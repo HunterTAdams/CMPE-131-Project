@@ -7,7 +7,7 @@ public class pawncontroller : basecontroller //fast piece that creates most of t
     public Vector2Int[] movetiles = new Vector2Int[4];
     public override void Turn()
     {
-        if (Vector2Int.Distance(currentTile.position, tileaccess.playerPos) < 20)
+        if (Vector2Int.Distance(currentTile.position, tileaccess.playerPos) < vision)
         {
             movesound.Play();
             if (tileaccess.playerPos == currentTile.position + Vector2Int.down + Vector2Int.left || tileaccess.playerPos == currentTile.position + Vector2Int.down + Vector2Int.right || tileaccess.playerPos == currentTile.position + Vector2Int.up + Vector2Int.left || tileaccess.playerPos == currentTile.position + Vector2Int.up + Vector2Int.right)
@@ -41,7 +41,7 @@ public class pawncontroller : basecontroller //fast piece that creates most of t
         tileaccess.energy += 1;
         DestroyImmediate(this.gameObject); //destoryed objects = null
     }
-    public override void OnMouseEnter()
+    /*public override void OnMouseEnter()
     {
         foreach(GameObject i in hovermoveshow)
         {
@@ -54,5 +54,6 @@ public class pawncontroller : basecontroller //fast piece that creates most of t
         {
             i.SetActive(false);
         }
-    }
+    }*/
+    //this is the bit associated with showing a piece's movement when they are hovered over. unfinished, disabled for the prerelase version, will be revamped for the release.
 }

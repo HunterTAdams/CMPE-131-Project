@@ -158,7 +158,7 @@ public class QueenController : basecontroller//alternates between rook and bisho
             foreach (Vector2Int prospect in movetiles)
             {
                 float pdist = Vector2Int.Distance(prospect, tileaccess.playerPos);
-                float score = (prospect.x - tileaccess.playerPos.x) - (prospect.y - tileaccess.playerPos.y);
+                float score = Mathf.Min((prospect.x - tileaccess.playerPos.x) - (prospect.y - tileaccess.playerPos.y), (prospect.x - tileaccess.playerPos.x) + (prospect.y - tileaccess.playerPos.y));
                 score = (score * score) * 400;
                 score += -pdist;
                 if (pdist > 7) score += pdist * 100;

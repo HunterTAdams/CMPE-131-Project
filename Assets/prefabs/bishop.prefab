@@ -135,6 +135,7 @@ MonoBehaviour:
   movesound: {fileID: 5501081709130631354}
   invulnerable: 0
   ghost: 0
+  vision: 12
 --- !u!212 &665371911716545891
 SpriteRenderer:
   m_ObjectHideFlags: 0

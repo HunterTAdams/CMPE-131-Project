@@ -7,7 +7,7 @@ public class RookController : basecontroller//distant threat that requires commi
     
     public override void Turn() //generates valid move list. 
     {
-        if (Vector2Int.Distance(currentTile.position, tileaccess.playerPos) < 20)
+        if (Vector2Int.Distance(currentTile.position, tileaccess.playerPos) < vision)
         {
             movesound.Play();
             Vector2Int[] movetiles = new Vector2Int[32];
@@ -96,7 +96,7 @@ public class RookController : basecontroller//distant threat that requires commi
     public override void death(basecontroller attacker)
     {
 
-        tileaccess.energy += 3;
+        tileaccess.energy += 1;
         DestroyImmediate(this.gameObject); //destoryed objects = null
     }
 }

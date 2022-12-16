@@ -18,7 +18,7 @@ public class gridConstructor : MonoBehaviour
     {
         tileaccess.tileDict = new Dictionary<Vector2Int, tileScript>();
         tileaccess.energy = 0;
-
+        tileaccess.isPlayerTurn = false;
         for (int x = minxdimension; x < maxxdimension; x++)
         {
             for (int y = minydimension; y < maxxdimension; y++)
@@ -37,6 +37,7 @@ public class gridConstructor : MonoBehaviour
             }
         }
         tilemap.ClearAllTiles();
+        DeathSystem.dead = false;//i fuckin hope if this is running that y'aint supposed to be dead, and this fixes some "pause during death" bugs
         foreach (GameObject i in enableatstart)
         {
             i.SetActive(true);//ayyyyyy easiest way to make shit spawn at the start w/o worrying about the dictionary bein there

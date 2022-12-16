@@ -20,7 +20,7 @@ public class DeathSystem : MonoBehaviour
     public void retry() {
         dead = false;
         Time.timeScale = 1f;
-        deathMenu.SetActive(false);
+        //deathMenu.SetActive(false); i left the rest of this enabled cuz it resets some values and otherwise doesn't matter, but i left the deathmenu on so it would hide things being reset before the reload
         player.Awake();
         player.health = 2;
         player.addhealth();
@@ -31,6 +31,9 @@ public class DeathSystem : MonoBehaviour
         {
             i.Awake();
         }
+        
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
     }
 
     public void quitBackToMain() {

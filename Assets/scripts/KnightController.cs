@@ -7,7 +7,7 @@ public class KnightController : basecontroller//obnoxious zoning fuck that takes
     public Vector2Int[] movetiles = new Vector2Int[8];
     public override void Turn()//nearly identical to the pawn controller move decision, but it wants to be more than 2 tiles away.
     {
-        if (Vector2Int.Distance(currentTile.position, tileaccess.playerPos) < 20)
+        if (Vector2Int.Distance(currentTile.position, tileaccess.playerPos) < vision)
         {
             movesound.Play();
             float distance = 1000; //if they're more than 1000 tiles away they dont deserve to move
@@ -33,7 +33,7 @@ public class KnightController : basecontroller//obnoxious zoning fuck that takes
     public override void death(basecontroller attacker)
     {
 
-        tileaccess.energy +=3;
+        tileaccess.energy +=1;
         DestroyImmediate(this.gameObject); //destoryed objects = null
     }
 }

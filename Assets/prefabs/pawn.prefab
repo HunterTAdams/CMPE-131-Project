@@ -65,6 +65,7 @@ MonoBehaviour:
   movesound: {fileID: 7973930292835000445}
   invulnerable: 0
   ghost: 0
+  vision: 12
   movetiles:
   - {x: 1, y: 0}
   - {x: -1, y: 0}

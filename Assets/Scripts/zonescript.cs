@@ -8,7 +8,7 @@ public class zonescript : MonoBehaviour
     public GameObject[] wall;
     public basecontroller king;
     public Camera main;
-    public GameObject hud;
+    public GameObject cleartext;
     public bool deadonce = false;
     public AudioSource music;
     public Vector2Int checkposition;
@@ -17,14 +17,13 @@ public class zonescript : MonoBehaviour
 
     public void Awake()
     {
-        Debug.Log("works");
         if (tileaccess.currentzone != null)
         {
             StartCoroutine(FadeAudioSource.StartFade(tileaccess.currentzone.music, 4, 0));
         }
         music.Play();
         StartCoroutine(FadeAudioSource.StartFade(music, 4, 1));
-        
+        cleartext.SetActive(false);
         tileaccess.currentzone = this;
         king.timeonturn = 1f;
         king.initposx = checkposition.x;
@@ -48,7 +47,6 @@ public class zonescript : MonoBehaviour
                     alldead = false;
                 }
             }
-            Debug.Log(alldead);
             if (alldead)
             {
                 
@@ -57,6 +55,7 @@ public class zonescript : MonoBehaviour
                     Destroy(i);
                 }
                 king.timeonturn = .1f;
+                cleartext.SetActive(true);
                 deadonce = true;
             }
             

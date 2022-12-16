@@ -16,6 +16,7 @@ public class basecontroller : MonoBehaviour
     public AudioSource movesound;
     public bool invulnerable;//walls
     public bool ghost; //triggers
+    public float vision; //how close the player needs to be to a piece for it to move
     // all pieces will be placed inactive, something will wake them, and when they do, this is called.
     public virtual void Awake()
     {

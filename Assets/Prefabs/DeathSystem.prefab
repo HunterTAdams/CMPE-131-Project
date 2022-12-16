@@ -267,6 +267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathMenu: {fileID: 2569712788863501520}
+  player: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &2569712789223338021
 GameObject:
   m_ObjectHideFlags: 0
