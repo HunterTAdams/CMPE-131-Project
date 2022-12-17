@@ -22,7 +22,7 @@ public class zonescript : MonoBehaviour
             StartCoroutine(FadeAudioSource.StartFade(tileaccess.currentzone.music, 4, 0));
         }
         music.Play();
-        StartCoroutine(FadeAudioSource.StartFade(music, 4, 1));
+        StartCoroutine(FadeAudioSource.StartFade(music, 4, 0.5f));
         cleartext.SetActive(false);
         tileaccess.currentzone = this;
         king.timeonturn = 1f;

@@ -18,7 +18,7 @@ public class playercontroller : basecontroller
     
     public override void Turn()
     {
-        turnsound.Play();
+        // turnsound.Play(); removing this for now
         tileaccess.isPlayerTurn = true;
         if (tileaccess.energy >= 5 && health <3)
         {
